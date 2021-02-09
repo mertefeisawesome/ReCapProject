@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,7 +19,7 @@ namespace Business.Concrete
 
         public void Add(Car car)
         {
-            if(car.Description.Length < 2)
+            if(car.CarName.Length < 2)
             {
                 Console.WriteLine("Araba ismi minimum 2 karakter olmalıdır.");
             }
@@ -46,6 +47,11 @@ namespace Business.Concrete
         public Car GetById(int car_id)
         {
             return _carDal.Get(p=>p.Id==car_id);
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
         }
 
         public List<Car> GetCarsByBrandId(int brand_id)
