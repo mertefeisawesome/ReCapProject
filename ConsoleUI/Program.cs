@@ -18,7 +18,7 @@ namespace ConsoleUI
 
             //UserTest();
 
-            Console.WriteLine(new RentalManager(new EfRentalDal()).Add(new Rental { CarId = 2, CustomerId = 2, Id = 2, RentDate = new DateTime(2021, 2, 12) }).Message);
+            Console.WriteLine(new RentalManager(new EfRentalDal(), new EfCarDal()).Add(new Rental() { CarId = 2, CustomerId = 2, Id = 2, RentDate = new DateTime(2021, 2, 12) }).Message);
 
         }
 

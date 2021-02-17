@@ -13,7 +13,7 @@ namespace Business.Concrete
 {
     public class CustomerManager : ICustomerService
     {
-        ICustomerDal _customerDal;
+        private ICustomerDal _customerDal;
 
         public CustomerManager(ICustomerDal customerDal)
         {
@@ -39,7 +39,7 @@ namespace Business.Concrete
 
         public IDataResult<Customer> GetById(int customer_id)
         {
-            return new SuccessDataResult<Customer>(_customerDal.Get(c => c.CustomerId == customer_id));
+            return new SuccessDataResult<Customer>(_customerDal.Get(c => c.Id == customer_id));
         }
 
         public IResult Update(Customer customer)
