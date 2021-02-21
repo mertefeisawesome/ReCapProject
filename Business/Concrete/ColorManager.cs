@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -11,13 +12,14 @@ namespace Business.Concrete
 {
     public class ColorManager : IColorService
     {
-        IColorDal _colorDal;
+        private IColorDal _colorDal;
 
         public ColorManager(IColorDal colorDal)
         {
             _colorDal = colorDal;
         }
 
+        [ValidationAspect(typeof(Color))]
         public IResult Add(Color color)
         {
             _colorDal.Add(color);
