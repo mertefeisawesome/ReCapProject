@@ -51,9 +51,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(string companyName)
+        public IActionResult Add(Customer customer)
         {
-            var result = _customerService.Add(new Customer { CompanyName = companyName });
+            var result = _customerService.Add(customer);
 
             if (result.Success)
             {

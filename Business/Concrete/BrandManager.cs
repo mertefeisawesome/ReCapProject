@@ -43,6 +43,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Brand>(_brandDal.Get(p => p.Id == brand_id));
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);

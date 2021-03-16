@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Entities.Concrete;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -39,21 +40,6 @@ namespace WebAPI.Controllers
         public IActionResult GetById(int id)
         {
             var result = _userService.GetById(id);
-
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            else
-            {
-                return BadRequest(result);
-            }
-        }
-
-        [HttpPost("add")]
-        public IActionResult Add(string firstName, string lastName, string email, string password)
-        {
-            var result = _userService.Add(new User { FirstName = firstName, LastName = lastName, Email = email, Password = password });
 
             if (result.Success)
             {

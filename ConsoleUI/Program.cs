@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
@@ -6,11 +7,11 @@ using System;
 
 namespace ConsoleUI
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            //CarTest();
+            CarTest();
 
             //ColorTest();
 
@@ -18,8 +19,7 @@ namespace ConsoleUI
 
             //UserTest();
 
-            Console.WriteLine(new RentalManager(new EfRentalDal(), new EfCarDal()).Add(new Rental() { CarId = 2, CustomerId = 2, Id = 2, RentDate = new DateTime(2021, 2, 12) }).Message);
-
+            //Console.WriteLine(new RentalManager(new EfRentalDal(), new EfCarDal()).Add(new Rental() { CarId = 2, CustomerId = 2, Id = 2, RentDate = new DateTime(2021, 2, 12) }).Message);
         }
 
         private static void UserTest()
@@ -36,7 +36,7 @@ namespace ConsoleUI
             Console.WriteLine("----------------------------------------------\n");
 
             //kullanıcı ekleme
-            userManager.Add(new User { Id = 750, FirstName = "Engin", LastName="Demiroğ", Email="engin@kodlama.io", Password="1234" });
+            //userManager.Add(new User { Id = 750, FirstName = "Engin", LastName = "Demiroğ", Email = "engin@kodlama.io", Password = "1234" });
 
             //bakalım kullanıcı veritabanına eklenmiş mi
             User testUser = userManager.GetById(750).Data;
@@ -130,7 +130,6 @@ namespace ConsoleUI
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
-
             Console.WriteLine("Araç Listesi: \n");
             foreach (var car in carManager.GetCarDetails().Data)
             {
@@ -144,9 +143,9 @@ namespace ConsoleUI
             Console.WriteLine("----------------------------------------------\n");
 
             //araç ekleme
-            carManager.Add(new Car { Id = 6, BrandId = 1, ColorId = 1, CarName = "a", DailyPrice = 0, ModelYear = 2020 });
-            carManager.Add(new Car { Id = 6, BrandId = 1, ColorId = 1, CarName = "Fluence", DailyPrice = 0, ModelYear = 2020 });
-            carManager.Add(new Car { Id = 6, BrandId = 1, ColorId = 1, CarName = "Fluence", DailyPrice = 120, ModelYear = 2020 });
+            carManager.Add(new Car { BrandId = 1, ColorId = 1, CarName = "a", DailyPrice = 0, ModelYear = 2020 });
+            carManager.Add(new Car { BrandId = 1, ColorId = 1, CarName = "Fluence", DailyPrice = 0, ModelYear = 2020 });
+            carManager.Add(new Car { BrandId = 1, ColorId = 1, CarName = "Fluence", DailyPrice = 120, ModelYear = 2020 });
 
             //bakalım araç veritabanına eklenmiş mi
             Car car6 = carManager.GetById(6).Data;
