@@ -1,6 +1,7 @@
 ﻿using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants
@@ -40,6 +41,7 @@ namespace Business.Constants
         public static string UserAlreadyExists = "Bu mail adresiyle kaydolmuş bir kullanıcı zaten var";
         public static string UserRegistered = "Kullanıcı kaydı başarılı";
         public static string AccessTokenCreated = "Access token oluşturuldu";
+        public static string AuthorizationDenied = "Bu işlem için yetkiniz yok";
 
         public static string RentalAdded = "Araç kiralandı.";
         public static string RentalDeleted = "Araç rezervasyonu silindi.";
