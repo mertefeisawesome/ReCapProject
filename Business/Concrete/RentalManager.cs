@@ -4,6 +4,7 @@ using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,8 +13,8 @@ namespace Business.Concrete
 {
     public class RentalManager : IRentalService
     {
-        IRentalDal _rentalDal;
-        ICarDal _carDal;
+        private IRentalDal _rentalDal;
+        private ICarDal _carDal;
 
         public RentalManager(IRentalDal rentalDal, ICarDal carDal)
         {
@@ -23,9 +24,9 @@ namespace Business.Concrete
 
         public IResult Add(Rental rental)
         {
-            if(_carDal.Get(c=>c.Id == rental.CarId).Availability == true)
+            if (_carDal.Get(c => c.Id == rental.CarId).Availability == true)
             {
-                Car car = _carDal.Get(c=>c.Id == rental.CarId);
+                Car car = _carDal.Get(c => c.Id == rental.CarId);
                 car.Availability = false;
                 _carDal.Update(car);
                 _rentalDal.Add(rental);
@@ -51,6 +52,11 @@ namespace Business.Concrete
         public IDataResult<Rental> GetById(int rental_id)
         {
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id == rental_id), Messages.RentalsListed);
+        }
+
+        public IDataResult<List<RentalDetailDto>> GetRentalDetails()
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(), Messages.RentalsListed);
         }
 
         public IResult Update(Rental rental)

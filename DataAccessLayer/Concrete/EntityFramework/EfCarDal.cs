@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCarDal : EfEntityRepositoryBase<Car,ReCapDbContext>, ICarDal
+    public class EfCarDal : EfEntityRepositoryBase<Car, ReCapDbContext>, ICarDal
     {
         public List<CarDetailDto> GetCarDetails(Expression<Func<Car, bool>> filter = null)
         {
@@ -22,10 +22,16 @@ namespace DataAccess.Concrete.EntityFramework
                              on c.ColorId equals cl.Id
                              select new CarDetailDto
                              {
-                                 Id = c.Id, BrandId = c.BrandId, ColorId = c.ColorId,
-                                 DailyPrice = c.DailyPrice, ModelYear = c.ModelYear,
-                                 Description = c.Description, CarName = c.CarName,
-                                 BrandName = b.Name, ColorName = cl.Name
+                                 Id = c.Id,
+                                 BrandId = c.BrandId,
+                                 ColorId = c.ColorId,
+                                 DailyPrice = c.DailyPrice,
+                                 ModelYear = c.ModelYear,
+                                 Description = c.Description,
+                                 CarName = c.CarName,
+                                 BrandName = b.Name,
+                                 ColorName = cl.Name,
+                                 Availability = c.Availability
                              };
                 return result.ToList();
             }

@@ -45,7 +45,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        [HttpGet("getcardetails")]
+        [HttpGet("getdetails")]
         public IActionResult GetCarDetails()
         {
             var result = _carService.GetCarDetails();
