@@ -73,7 +73,7 @@ namespace Core.Utilities.Helpers
 
             string result = $@"{Environment.CurrentDirectory + @"\wwwroot\Images"}\{creatingUniqueFilename}";
 
-            return (result, $"\\Images\\{creatingUniqueFilename}");
+            return (result, $@"\Images\{creatingUniqueFilename}");
         }
     }
 }

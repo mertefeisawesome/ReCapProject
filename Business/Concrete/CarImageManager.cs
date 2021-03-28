@@ -65,7 +65,7 @@ namespace Business.Concrete
                 return new SuccessDataResult<List<CarImage>>(carImages);
             }
 
-            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(p => p.Id == car_id), Messages.ImagesListed);
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(filter: p => p.CarId == car_id), Messages.ImagesListed);
         }
 
         public IResult TransactionalOperation(CarImage carImage, IFormFile file)
